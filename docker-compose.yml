@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: my-test-db
+      POSTGRES_USER: migo
+      POSTGRES_PASSWORD: test-pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    
+    
+#psql -h 0.0.0.0 -p 5432 -d my-test-db -U migo
