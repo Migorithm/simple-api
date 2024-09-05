@@ -13,6 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(optionBuilder =>
     optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// add controllers
+builder.Services.AddControllers();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,4 +29,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// To make swagger work with controllers
+app.MapControllers();
 app.Run();
