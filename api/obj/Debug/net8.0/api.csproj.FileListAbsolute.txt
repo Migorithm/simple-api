@@ -99,3 +99,8 @@
 /Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.csproj.AssemblyReference.cache
 /Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.csproj.Up2Date
 /Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.sourcelink.json
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.MvcApplicationPartsAssemblyInfo.cs

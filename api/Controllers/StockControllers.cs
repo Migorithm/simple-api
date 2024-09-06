@@ -33,4 +33,23 @@ public class StockControllers : ControllerBase
         var stock = _context.Stock.Find(id);
         return stock != null ? Ok(stock.ToResponse()) : NotFound();
     }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] CreateStockRequestDto request)
+    {
+        var stockModel = request.ToStock();
+        using (var trx = _context.Database.BeginTransaction())
+        {
+            _context.Stock.Add(stockModel);
+            // Up until this point, there is no id assigned for this entity
+
+
+            // After SaveChanges, the id is assigned to the entity
+            _context.SaveChanges();
+            trx.Commit();
+        }
+
+        // CreatedAtAction runs `GetById` defined above.
+        return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToResponse());
+    }
 }
