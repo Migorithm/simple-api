@@ -1,4 +1,5 @@
 using api.Data;
+using api.Dtos.Stock;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ public class StockControllers : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var stocks = _context.Stock.ToList();
+        var stocks = _context.Stock.Select(stock => stock.ToResponse());
         return Ok(stocks);
     }
 
@@ -30,6 +31,6 @@ public class StockControllers : ControllerBase
     public IActionResult GetById([FromRoute] int id)
     {
         var stock = _context.Stock.Find(id);
-        return stock != null ? Ok(stock) : NotFound();
+        return stock != null ? Ok(stock.ToResponse()) : NotFound();
     }
 }
