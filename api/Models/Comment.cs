@@ -11,4 +11,5 @@ public class Comment
 
     // Navigation property - creates cyclic reference
     public Stock? Stock { get; set; }
+
 }

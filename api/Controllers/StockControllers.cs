@@ -30,6 +30,7 @@ public class StockControllers : ControllerBase
     // integer
     public IActionResult GetById([FromRoute] int id)
     {
+
         var stock = _context.Stock.Find(id);
         return stock != null ? Ok(stock.ToResponse()) : NotFound();
     }
@@ -51,5 +52,29 @@ public class StockControllers : ControllerBase
 
         // CreatedAtAction runs `GetById` defined above.
         return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToResponse());
+    }
+
+    [HttpPut("{id:int}")]
+    public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
+    {
+        var stock = _context.Stock.FirstOrDefault(x => x.Id == id);
+        if (stock == null)
+        {
+            return NotFound();
+        }
+
+
+        // Just note that entity framework captures the field changes so when it sends the update,
+        // it only sends the fields that have changed.
+        stock.Symbol = updateDto.Symbol;
+        stock.CompanyName = updateDto.CompanyName;
+        stock.Purchase = updateDto.Purchase;
+        stock.LastDiv = updateDto.LastDiv;
+        stock.Industry = updateDto.Industry;
+        stock.MarketCap = updateDto.MarketCap;
+        _context.SaveChanges();
+
+        return Ok(stock.ToResponse());
+
     }
 }
