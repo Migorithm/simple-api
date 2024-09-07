@@ -1,4 +1,8 @@
 using api.Data;
+using api.Interfaces;
+using api.Models;
+using api.ParamObjects.Stock;
+using api.Repository;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -12,6 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(optionBuilder =>
 {
     optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+// wire up dependency
+builder.Services.AddScoped<StockRepository>();
+builder.Services.AddScoped<CommentRepository>();
 
 // add controllers that are annotated with [ApiController]
 builder.Services.AddControllers();
