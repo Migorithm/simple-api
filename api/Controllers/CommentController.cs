@@ -27,7 +27,7 @@ namespace api.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
             var comment = await _commentRepo.Query(new ParamObjects.Comment.PGet { Id = id });
@@ -58,6 +58,7 @@ namespace api.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, UpdateCommentDto dto)
         {
+
             var comment = await _commentRepo.Query(new ParamObjects.Comment.PGet { Id = id });
             if (comment == null)
             {

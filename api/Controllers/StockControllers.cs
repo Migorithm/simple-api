@@ -18,10 +18,10 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
     private readonly StockRepository _stockRepo = stockRepo;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] PGetAll query)
     {
 
-        var stocks = await _stockRepo.Query(new PGetAll());
+        var stocks = await _stockRepo.Query(query);
         return Ok(stocks.Select(stock => stock.ToResponse()));
     }
 
@@ -40,6 +40,11 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateStockRequestDto request)
     {
+        if (!ModelState.IsValid)
+        {
+            return UnprocessableEntity(ModelState);
+        }
+
         var stockModel = request.ToStock();
 
 
@@ -53,6 +58,10 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
     {
+        if (!ModelState.IsValid)
+        {
+            return UnprocessableEntity(ModelState);
+        }
 
         var stock = await _stockRepo.Query(new PGet { Id = id });
 
@@ -73,6 +82,7 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
+
         var stock = await _stockRepo.Query(new PGet { Id = id });
         if (stock == null)
         {

@@ -6,8 +6,14 @@ using api.Dtos.Stock;
 
 namespace api.ParamObjects.Stock
 {
-    public struct PGetAll
+    public class PGetAll
     {
+        public string? Symbol { get; set; } = null;
+        public string? CompanyName { get; set; } = null;
+
+        public string? SortBy { get; set; } = null;
+
+        public bool IsDesc { get; set; } = false;
 
     }
     public struct PGet

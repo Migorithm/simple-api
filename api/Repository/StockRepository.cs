@@ -19,8 +19,48 @@ namespace api.Repository
     {
         public async Task<List<Stock>> Query(PGetAll parameterObject)
         {
-            return await _context.Stock.Include(c => c.Comments).ToListAsync();
+            // To defer the execution, turn in into a queryable
+            var stocks = _context.Stock.Include(c => c.Comments).AsQueryable();
 
+            if (!string.IsNullOrWhiteSpace(parameterObject.CompanyName))
+            {
+                stocks = stocks.Where(x => x.CompanyName.Contains(parameterObject.CompanyName));
+            }
+            if (!string.IsNullOrWhiteSpace(parameterObject.Symbol))
+            {
+                stocks = stocks.Where(x => x.Symbol.Contains(parameterObject.Symbol));
+            }
+
+            if (!string.IsNullOrWhiteSpace(parameterObject.SortBy))
+            {
+                if (parameterObject.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.Symbol) : stocks.OrderBy(x => x.Symbol);
+                }
+                else if (parameterObject.SortBy.Equals("CompanyName", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.CompanyName) : stocks.OrderBy(x => x.CompanyName);
+                }
+                else if (parameterObject.SortBy.Equals("Purchase", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.Purchase) : stocks.OrderBy(x => x.Purchase);
+                }
+                else if (parameterObject.SortBy.Equals("LastDiv", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.LastDiv) : stocks.OrderBy(x => x.LastDiv);
+                }
+                else if (parameterObject.SortBy.Equals("Industry", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.Industry) : stocks.OrderBy(x => x.Industry);
+                }
+                else if (parameterObject.SortBy.Equals("MarketCap", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.MarketCap) : stocks.OrderBy(x => x.MarketCap);
+                }
+            }
+
+
+            return await stocks.ToListAsync();
 
         }
     }
