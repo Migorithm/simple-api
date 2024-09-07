@@ -57,8 +57,13 @@ namespace api.Repository
                 {
                     stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.MarketCap) : stocks.OrderBy(x => x.MarketCap);
                 }
+                else if (parameterObject.SortBy.Equals("Id", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = parameterObject.IsDesc ? stocks.OrderByDescending(x => x.Id) : stocks.OrderBy(x => x.Id);
+                }
             }
 
+            stocks = stocks.Skip((parameterObject.PageNum - 1) * parameterObject.PageSize).Take(parameterObject.PageSize);
 
             return await stocks.ToListAsync();
 

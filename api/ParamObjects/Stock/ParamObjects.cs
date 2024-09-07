@@ -15,6 +15,9 @@ namespace api.ParamObjects.Stock
 
         public bool IsDesc { get; set; } = false;
 
+        public int PageNum { get; set; } = 1;
+        public int PageSize { get; set; } = 5;
+
     }
     public struct PGet
     {
