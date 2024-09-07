@@ -18,4 +18,12 @@ namespace api.ParamObjects.Comment
         public Models.Comment Comment { get; set; }
     }
 
+    public struct PUpdate
+    {
+        public Models.Comment Comment { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
+
+
 }

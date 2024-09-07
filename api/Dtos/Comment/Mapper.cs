@@ -20,15 +20,13 @@ namespace api.Dtos.Comment
 
         }
 
-        public static Models.Comment ToComment(this CreateCommentDto dto)
+        public static Models.Comment ToCommentFromCreate(this CreateCommentDto dto, int stockId)
         {
             return new Models.Comment
             {
                 Title = dto.Title,
-                CreatedOn = dto.CretedOn,
-                StockId = dto.StockId,
                 Content = dto.Content,
-
+                StockId = stockId,
             };
         }
     }

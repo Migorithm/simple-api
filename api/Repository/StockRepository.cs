@@ -69,4 +69,13 @@ namespace api.Repository
             await _context.SaveChangesAsync();
         }
     }
+
+    public partial class StockRepository : IQuery<PStockExists, bool>
+    {
+        public Task<bool> Query(PStockExists parameterObject)
+        {
+            return _context.Stock.AnyAsync(x => x.Id == parameterObject.Id);
+        }
+    }
+
 }

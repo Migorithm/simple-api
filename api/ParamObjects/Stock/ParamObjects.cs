@@ -31,4 +31,9 @@ namespace api.ParamObjects.Stock
     {
         public Models.Stock Stock { get; set; }
     }
+
+    public struct PStockExists
+    {
+        public int Id { get; set; }
+    }
 }

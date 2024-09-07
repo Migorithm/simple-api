@@ -39,4 +39,17 @@ namespace api.Repository
             await _context.SaveChangesAsync();
         }
     }
+
+    public partial class CommentRepository : ICommand<PUpdate>
+    {
+        public async Task Execute(PUpdate parameterObject)
+        {
+            parameterObject.Comment.Title = parameterObject.Title;
+            parameterObject.Comment.Content = parameterObject.Content;
+            await _context.SaveChangesAsync();
+        }
+    }
+
+
+
 }

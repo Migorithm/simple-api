@@ -13,13 +13,14 @@ namespace api.Controllers
 {
     [Route("api/comment")]
     [ApiController]
-    public class CommentController(CommentRepository commentRepo) : ControllerBase
+    public class CommentController(CommentRepository commentRepo, StockRepository stockRepo) : ControllerBase
     {
 
         private readonly CommentRepository _commentRepo = commentRepo;
+        private readonly StockRepository _stockRepo = stockRepo;
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CommentResponse>>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
             var comments = await _commentRepo.Query(new ParamObjects.Comment.PGetAll());
             return Ok(comments.Select(x => x.ToCommentDto()).ToList());
@@ -27,7 +28,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CommentResponse>> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var comment = await _commentRepo.Query(new ParamObjects.Comment.PGet { Id = id });
             if (comment == null)
@@ -35,16 +36,36 @@ namespace api.Controllers
                 return NotFound();
             }
             // How do I include the stock information in the response?
-            
-            return comment.ToCommentDto();
+
+            return Ok(comment.ToCommentDto());
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Comment>> Create(CreateCommentDto dto)
+        [HttpPost("{stockId:int}")]
+        public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentDto dto)
         {
-            var comment = dto.ToComment();
+
+            if (!await _stockRepo.Query(new ParamObjects.Stock.PStockExists { Id = stockId }))
+            {
+                return BadRequest("Stock does not exist");
+            }
+
+            var comment = dto.ToCommentFromCreate(stockId);
             await _commentRepo.Execute(new ParamObjects.Comment.PCreate { Comment = comment });
-            return CreatedAtAction(nameof(Get), new { id = comment.Id }, comment);
+            return CreatedAtAction(nameof(Get), new { id = comment.Id }, comment.ToCommentDto());
+
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, UpdateCommentDto dto)
+        {
+            var comment = await _commentRepo.Query(new ParamObjects.Comment.PGet { Id = id });
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            await _commentRepo.Execute(new ParamObjects.Comment.PUpdate { Comment = comment, Title = dto.Title, Content = dto.Content });
+            return Ok(comment.ToCommentDto());
         }
     }
 }
