@@ -67,5 +67,18 @@ namespace api.Controllers
             await _commentRepo.Execute(new ParamObjects.Comment.PUpdate { Comment = comment, Title = dto.Title, Content = dto.Content });
             return Ok(comment.ToCommentDto());
         }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var comment = await _commentRepo.Query(new ParamObjects.Comment.PGet { Id = id });
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            await _commentRepo.Execute(new ParamObjects.Comment.PDelete { Id = id });
+            return NoContent();
+        }
     }
 }

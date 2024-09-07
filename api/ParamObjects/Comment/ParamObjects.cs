@@ -26,4 +26,9 @@ namespace api.ParamObjects.Comment
     }
 
 
+    public struct PDelete
+    {
+        public int Id { get; set; }
+    }
+
 }

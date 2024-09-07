@@ -50,6 +50,13 @@ namespace api.Repository
         }
     }
 
+    public partial class CommentRepository : ICommand<PDelete>
+    {
+        public async Task Execute(PDelete parameterObject)
+        {
+            await _context.Comment.Where(x => x.Id == parameterObject.Id).ExecuteDeleteAsync();
+        }
+    }
 
 
 }
