@@ -34,6 +34,8 @@ namespace api.Controllers
             {
                 return NotFound();
             }
+            // How do I include the stock information in the response?
+            
             return comment.ToCommentDto();
         }
 

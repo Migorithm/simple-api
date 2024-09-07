@@ -104,3 +104,7 @@
 /Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.MvcApplicationPartsAssemblyInfo.cs
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll

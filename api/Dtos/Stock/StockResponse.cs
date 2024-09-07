@@ -1,3 +1,5 @@
+using api.Dtos.Comment;
+
 namespace api.Dtos.Stock;
 
 public class StockResponse
@@ -17,4 +19,5 @@ public class StockResponse
     public long MarketCap { get; set; }
 
     //Comments are not included in the StockDto
+    public CommentResponse[] Comments { get; set; }
 }

@@ -4,6 +4,7 @@ using api.Models;
 using api.ParamObjects.Stock;
 using api.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,12 @@ builder.Services.AddScoped<CommentRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// To prevent infinite loop when serializing entities with relationships
+builder.Services.AddControllers().AddJsonOptions(
+    options => options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles
+);
+
 
 var app = builder.Build();
 

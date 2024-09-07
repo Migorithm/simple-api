@@ -15,8 +15,7 @@ namespace api.Dtos.Comment
                 Title = comment.Title,
                 CretedOn = comment.CreatedOn,
                 StockId = comment.StockId,
-                Content = comment.Content
-
+                Content = comment.Content,
             };
 
         }
@@ -28,7 +27,8 @@ namespace api.Dtos.Comment
                 Title = dto.Title,
                 CreatedOn = dto.CretedOn,
                 StockId = dto.StockId,
-                Content = dto.Content
+                Content = dto.Content,
+
             };
         }
     }

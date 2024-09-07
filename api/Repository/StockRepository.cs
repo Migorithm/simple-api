@@ -19,7 +19,7 @@ namespace api.Repository
     {
         public async Task<List<Stock>> Query(PGetAll parameterObject)
         {
-            return await _context.Stock.ToListAsync();
+            return await _context.Stock.Include(c => c.Comments).ToListAsync();
 
 
         }
@@ -29,7 +29,7 @@ namespace api.Repository
     {
         public Task<Stock?> Query(PGet parameterObject)
         {
-            return _context.Stock.FindAsync(parameterObject.Id).AsTask();
+            return _context.Stock.Include(c => c.Comments).FirstOrDefaultAsync(x => x.Id == parameterObject.Id);
         }
     }
 
