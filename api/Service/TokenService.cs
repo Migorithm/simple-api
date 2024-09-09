@@ -26,6 +26,8 @@ namespace api.Service
 
         public string CreateToken(AppUser user)
         {
+
+            // The following cliams will be added in place of `sub`
             var claims = new List<Claim>{
 
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
