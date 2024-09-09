@@ -3,6 +3,7 @@ using api.Interfaces;
 using api.Models;
 using api.ParamObjects.Stock;
 using api.Repository;
+using api.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -47,10 +48,14 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        // Issuer is basically server
+        // server validates the token - checks if it is valid
         ValidateIssuer = true,
         ValidIssuer = builder.Configuration["JWT:Issuer"],
 
+        // ValidateLifetime = true,
+        // LifetimeValidator = (before, expires, token, param) => expires > DateTime.UtcNow,
+
+        // Here, audience means intended recipient of the token, typically URL, identifier, unique string
         ValidateAudience = true,
         ValidAudience = builder.Configuration["JWT:Audience"],
 
@@ -63,6 +68,7 @@ builder.Services.AddAuthentication(options =>
 // wire up dependency
 builder.Services.AddScoped<StockRepository>();
 builder.Services.AddScoped<CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // add controllers that are annotated with [ApiController]
 builder.Services.AddControllers();
