@@ -8,6 +8,7 @@ using api.Interfaces;
 using api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace api.Controllers
@@ -17,14 +18,48 @@ namespace api.Controllers
     public class AccountController : ControllerBase
     {
 
+        // UserManager is to manage user creation, deletion, update, etc.
         private readonly UserManager<AppUser> _userManager;
+
+        // SigninManager is to manage user signin
+        private readonly SignInManager<AppUser> _signInManager;
+
         private readonly ITokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService)
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _tokenService = tokenService;
+            _signInManager = signInManager;
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username);
+            if (user == null)
+            {
+                return Unauthorized("Invalid username");
+            }
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            if (result.Succeeded)
+            {
+                return Ok(new NewUserDto
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Token = _tokenService.CreateToken(user)
+                });
+            }
+            else
+            {
+                return Unauthorized("Username not found and/or password is incorrect");
+            }
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] AccountRegisterDto dto)
@@ -41,10 +76,6 @@ namespace api.Controllers
                     UserName = dto.Username,
                     Email = dto.Email
                 };
-
-
-                // Create User first
-                // Unit of work!
 
 
                 using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
