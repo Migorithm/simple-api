@@ -104,3 +104,17 @@
 /Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/wonseok.lee.2/cshap_prac/api/api/obj/Debug/net8.0/api.MvcApplicationPartsAssemblyInfo.cs
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/wonseok.lee.2/cshap_prac/api/api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
