@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace api.Models;
 
+
+[Table("Stock")]
 public class Stock
 {
     // When declare field, type 'prop' which is a shortcut ,
@@ -20,4 +22,6 @@ public class Stock
     public long MarketCap { get; set; }
 
     public List<Comment> Comments { get; set; } = [];
+
+    public List<Portfolio> Portfolios { get; set; } = [];
 }
