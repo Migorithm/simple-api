@@ -8,6 +8,7 @@ namespace api.Models
 {
     // Extension of IdentityUser that has default values for user
     public class AppUser : IdentityUser<int>
+
     {
 
     }
