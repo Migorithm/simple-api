@@ -1,22 +1,25 @@
-using System.Transactions;
-using api.Data;
+using api.Controllers.Extensions;
+
 using api.Dtos.Stock;
-using api.Interfaces;
+
 using api.Models;
 using api.ParamObjects.Stock;
 using api.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace api.Controllers;
 
 [Route("api/stock")]
 [ApiController]
-public class StockControllers(StockRepository stockRepo) : ControllerBase
+public class StockControllers(StockRepository stockRepo, PortfolioRepository portfolioRepository, UserManager<AppUser> userManager) : ControllerBase
 
 {
     private readonly StockRepository _stockRepo = stockRepo;
+    private readonly PortfolioRepository _portfolioRepository = portfolioRepository;
+    private readonly UserManager<AppUser> _userManager = userManager;
 
     [HttpGet]
     [Authorize]
@@ -40,6 +43,7 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] CreateStockRequestDto request)
     {
         if (!ModelState.IsValid)
@@ -48,9 +52,12 @@ public class StockControllers(StockRepository stockRepo) : ControllerBase
         }
 
         var stockModel = request.ToStock();
+        var userId = int.Parse(User.GetUserId());
 
 
-        await _stockRepo.Execute(new PCreate { Stock = stockModel });
+
+
+        await _stockRepo.Execute(new PCreate(stockModel, userId));
 
 
         // CreatedAtAction runs `GetById` defined above.

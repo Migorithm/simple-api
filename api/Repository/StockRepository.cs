@@ -83,8 +83,32 @@ namespace api.Repository
         public async Task Execute(PCreate parameterObject)
         {
 
-            await _context.Stock.AddAsync(parameterObject.Stock);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.Stock.AddAsync(parameterObject.Stock);
+                await _context.SaveChangesAsync();
+
+                // By this time, the Stock.Id is available
+                Console.WriteLine($"Stock.Id: {parameterObject.Stock.Id}");
+
+                var portfolio = new Portfolio
+                {
+                    AppUserId = parameterObject.UserId,
+                    StockId = parameterObject.Stock.Id  // Stock.Id is available after SaveChangesAsync()
+                };
+
+                await _context.Portfolio.AddAsync(portfolio);
+                await _context.SaveChangesAsync();
+
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                throw;
+            }
         }
     }
 

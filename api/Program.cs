@@ -68,6 +68,7 @@ builder.Services.AddAuthentication(options =>
 // wire up dependency
 builder.Services.AddScoped<StockRepository>();
 builder.Services.AddScoped<CommentRepository>();
+builder.Services.AddScoped<PortfolioRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 // add controllers that are annotated with [ApiController]

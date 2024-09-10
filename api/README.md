@@ -24,3 +24,5 @@ dotnet ef database update
 - Microsoft.EntityFrameWorkCore
 - Microsoft.EntityFrameWorkCore.Design (schema migration)
 - Npgsql.EntityFrameWorkCore.PostgreSQL
+
+

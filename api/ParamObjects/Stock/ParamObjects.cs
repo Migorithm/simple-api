@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Dtos.Stock;
@@ -24,10 +25,11 @@ namespace api.ParamObjects.Stock
         public int Id { get; set; }
     }
 
-    public struct PCreate
+    public record PCreate(Models.Stock stock, int userId)
     {
 
-        public Models.Stock Stock { get; set; }
+        public Models.Stock Stock { get; set; } = stock;
+        public int UserId { get; set; } = userId;
     }
 
     public struct PUpdate

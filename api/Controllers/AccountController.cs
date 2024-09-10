@@ -78,39 +78,37 @@ namespace api.Controllers
                 };
 
 
-                using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+                using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+
+                var userCreationResult = await _userManager.CreateAsync(appUser, dto.Password);
+                if (userCreationResult.Succeeded)
                 {
-
-                    var userCreationResult = await _userManager.CreateAsync(appUser, dto.Password);
-                    if (userCreationResult.Succeeded)
+                    // and if operation above is successful, add user to role.
+                    // ! SATEFY: what if user creating operation succeeds but role adding operation fails?
+                    // ! It just fails with user being not assigned with any role.
+                    var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
+                    if (roleResult.Succeeded)
                     {
-                        // and if operation above is successful, add user to role.
-                        // ! SATEFY: what if user creating operation succeeds but role adding operation fails?
-                        // ! It just fails with user being not assigned with any role.
-                        var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
-                        if (roleResult.Succeeded)
+                        transaction.Complete();
+
+
+                        return Ok(new NewUserDto
                         {
-                            transaction.Complete();
-
-
-                            return Ok(new NewUserDto
-                            {
-                                UserName = appUser.UserName,
-                                Email = appUser.Email,
-                                Token = _tokenService.CreateToken(appUser)
-                            });
-                        }
-                        else
-                        {
-
-                            return StatusCode(500, roleResult.Errors);
-                        }
+                            UserName = appUser.UserName,
+                            Email = appUser.Email,
+                            Token = _tokenService.CreateToken(appUser)
+                        });
                     }
                     else
                     {
 
-                        return StatusCode(500, userCreationResult.Errors);
+                        return StatusCode(500, roleResult.Errors);
                     }
+                }
+                else
+                {
+
+                    return StatusCode(500, userCreationResult.Errors);
                 }
             }
             catch (Exception e)
