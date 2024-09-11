@@ -6,6 +6,7 @@ using api.Data;
 using api.Interfaces;
 using api.Models;
 using api.ParamObjects.Comment;
+using api.ParamObjects.Portfolio;
 using Microsoft.EntityFrameworkCore;
 
 //! Q: how do I create join table automatically?
@@ -45,6 +46,20 @@ namespace api.Repository
                 Console.WriteLine(e);
                 throw;
             }
+        }
+    }
+    public partial class PortfolioRepository : ICommand<PDeletePortfolio>
+    {
+        public async Task Execute(PDeletePortfolio parameterObject)
+        {
+            var portfolio = await _context.Portfolio.FirstOrDefaultAsync(x => x.StockId == parameterObject.StockId);
+            if (portfolio == null)
+            {
+                return;
+            }
+
+            _context.Portfolio.Remove(portfolio);
+            await _context.SaveChangesAsync();
         }
     }
 }

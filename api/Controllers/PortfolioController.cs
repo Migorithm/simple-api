@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using api.Controllers.Extensions;
 using api.Models;
 using api.ParamObjects.Comment;
+using api.ParamObjects.Portfolio;
 using api.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -31,6 +32,23 @@ namespace api.Controllers
             var userPortfolio = await _portfolioRepository.Query(new PGetUserPortfolio { AppUserId = int.Parse(userId) });
 
             return Ok(userPortfolio);
+        }
+
+
+        [HttpDelete("{stockId:int}")]
+        [Authorize]
+        public async Task<IActionResult> DeletePortfolio(int stockId)
+        {
+            var userId = User.GetUserId();
+            var userPortfolio = await _portfolioRepository.Query(new PGetUserPortfolio { AppUserId = int.Parse(userId) });
+            if (userPortfolio == null && userPortfolio.Find(x => x.Id == stockId) == null)
+            {
+                return NotFound();
+            }
+
+            await _portfolioRepository.Execute(new PDeletePortfolio { StockId = stockId });
+
+            return Ok();
         }
     }
 }
