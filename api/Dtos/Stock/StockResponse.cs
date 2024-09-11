@@ -17,6 +17,7 @@ public class StockResponse
     public string Industry { get; set; } = string.Empty;
 
     public long MarketCap { get; set; }
+    public int Version { get; set; }
 
     //Comments are not included in the StockDto
     public CommentResponse[] Comments { get; set; }

@@ -24,6 +24,9 @@ public class ApplicationDbContext(DbContextOptions dbContextOptions) : IdentityD
     {
         base.OnModelCreating(builder);
 
+        // versioning for stock
+        builder.Entity<Stock>().Property(p => p.Version).IsConcurrencyToken();
+
         // declare the composite primary key
         builder.Entity<Portfolio>(x => x.HasKey(p => new { p.AppUserId, p.StockId }));
 
@@ -40,5 +43,23 @@ public class ApplicationDbContext(DbContextOptions dbContextOptions) : IdentityD
             new() {Id= -2,Name = "User", NormalizedName = "USER"}
         ];
         builder.Entity<AppRole>().HasData(roles);
+    }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+
+        var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is Stock && (
+
+                    e.State == EntityState.Modified));
+        Console.WriteLine("entries: " + entries.Count());
+        foreach (var entityEntry in entries)
+        {
+            ;
+            ((Stock)entityEntry.Entity).Version++;
+        }
+
+        return base.SaveChangesAsync();
     }
 }

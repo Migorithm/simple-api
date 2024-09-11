@@ -67,7 +67,8 @@ namespace api.Migrations
                     Divdend = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     LastDiv = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     Industry = table.Column<string>(type: "text", nullable: false),
-                    MarketCap = table.Column<long>(type: "bigint", nullable: false)
+                    MarketCap = table.Column<long>(type: "bigint", nullable: false),
+                    Version = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,6 +202,30 @@ namespace api.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Portfolio",
+                columns: table => new
+                {
+                    AppUserId = table.Column<int>(type: "integer", nullable: false),
+                    StockId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Portfolio", x => new { x.AppUserId, x.StockId });
+                    table.ForeignKey(
+                        name: "FK_Portfolio_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Portfolio_Stock_StockId",
+                        column: x => x.StockId,
+                        principalTable: "Stock",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -251,6 +276,11 @@ namespace api.Migrations
                 name: "IX_Comment_StockId",
                 table: "Comment",
                 column: "StockId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Portfolio_StockId",
+                table: "Portfolio",
+                column: "StockId");
         }
 
         /// <inheritdoc />
@@ -273,6 +303,9 @@ namespace api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comment");
+
+            migrationBuilder.DropTable(
+                name: "Portfolio");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

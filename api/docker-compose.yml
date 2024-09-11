@@ -7,5 +7,5 @@ services:
       POSTGRES_USER: migo
       POSTGRES_PASSWORD: test-pass
     ports:
-      - "5432:5432"
+      - "5439:5432"
     #psql -h 0.0.0.0 -p 5432 -d my-test-db -U migo

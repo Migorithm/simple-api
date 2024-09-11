@@ -16,6 +16,7 @@ public static class Mapper
             LastDiv = stockModel.LastDiv,
             Industry = stockModel.Industry,
             MarketCap = stockModel.MarketCap,
+            Version = stockModel.Version,
             Comments = stockModel.Comments.Select(c => c.ToCommentDto()).ToArray()
         };
     }

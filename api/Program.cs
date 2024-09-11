@@ -132,6 +132,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// To make swagger work with controllers
+// To make swagger work with controllersq
 app.MapControllers();
 app.Run();
