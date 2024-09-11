@@ -12,9 +12,14 @@ public class Comment
     public string Content { get; set; } = string.Empty;
 
 
+    // Navigation property - creates cyclic reference?
     public int? StockId { get; set; }
 
-    // Navigation property - creates cyclic reference
     public Stock? Stock { get; set; }
+
+    // One to one is ensured by not having a list
+    public int AppUserId { get; set; }
+    public AppUser AppUser { get; set; }
+
 
 }
