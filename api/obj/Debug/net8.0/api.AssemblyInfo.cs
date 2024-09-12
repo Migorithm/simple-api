@@ -9,11 +9,12 @@
 
 using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ca6a23e298a1a69a15036ce7093b5e6f1867a53")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6e445c0e8c0453cf5fa9d3953d10dd343b55222")]
 [assembly: System.Reflection.AssemblyProductAttribute("api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

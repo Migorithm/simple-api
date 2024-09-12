@@ -1,0 +1,36 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2cda2888_002Dd260_002D4ac4_002D87ad_002D783da62b661f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=381549d5_002Da4b8_002D473c_002Dafbb_002D258ebd49fbb7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentDtoTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4af8f496_002Db948_002D42d1_002D8cb0_002D0f36a3f8de4f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5c382fba_002D2b3d_002D4aea_002Db89b_002D3ab80bafe057/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7715c842_002D0051_002D4125_002Dbdda_002D394ca4ffd34b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommentDtoTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bcf7296e_002D50ab_002D454c_002D8aa3_002Dbfa993131e27/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dd99c9ac_002Dc629_002D411a_002D8914_002Da268965fd08d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
