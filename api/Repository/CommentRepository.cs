@@ -19,7 +19,7 @@ namespace api.Repository
     {
         public async Task<List<Comment>> Query(PGetAll parameterObject)
         {
-            return await _context.Comment.ToListAsync();
+            return await _context.Comment.Include(c => c.AppUser).ToListAsync();
         }
     }
 
@@ -27,7 +27,7 @@ namespace api.Repository
     {
         public Task<Comment?> Query(PGet parameterObject)
         {
-            return _context.Comment.FindAsync(parameterObject.Id).AsTask();
+            return _context.Comment.Include(c => c.AppUser).FirstOrDefaultAsync(c => c.Id == parameterObject.Id);
         }
     }
 

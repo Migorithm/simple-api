@@ -13,7 +13,8 @@ namespace api.Dtos.Comment
             {
                 Id = comment.Id,
                 Title = comment.Title,
-                CretedOn = comment.CreatedOn,
+                CreatedOn = comment.CreatedOn,
+                CreatedBy = comment.AppUser.UserName,
                 StockId = comment.StockId,
                 Content = comment.Content,
             };

@@ -20,7 +20,7 @@ namespace api.Repository
         public async Task<List<Stock>> Query(PGetAll parameterObject)
         {
             // To defer the execution, turn in into a queryable
-            var stocks = _context.Stock.Include(c => c.Comments).AsQueryable();
+            var stocks = _context.Stock.Include(c => c.Comments).ThenInclude(c=>c.AppUser).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(parameterObject.CompanyName))
             {
@@ -74,7 +74,7 @@ namespace api.Repository
     {
         public Task<Stock?> Query(PGet parameterObject)
         {
-            return _context.Stock.Include(c => c.Comments).FirstOrDefaultAsync(x => x.Id == parameterObject.Id);
+            return _context.Stock.Include(c => c.Comments).ThenInclude(c=>c.AppUser).FirstOrDefaultAsync(x => x.Id == parameterObject.Id);
         }
     }
 
