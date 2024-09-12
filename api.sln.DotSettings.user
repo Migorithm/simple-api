@@ -1,4 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/Users/wonseok.lee.2/.nuget/packages/fluentassertions/7.0.0-alpha.4/lib/net6.0/FluentAssertions.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2cda2888_002Dd260_002D4ac4_002D87ad_002D783da62b661f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
@@ -19,9 +22,19 @@
     &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7715c842_002D0051_002D4125_002Dbdda_002D394ca4ffd34b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommentDtoTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=71097da3_002De6f6_002D4d15_002Dbfc8_002Daf753a396d3d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #6" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7715c842_002D0051_002D4125_002Dbdda_002D394ca4ffd34b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentDtoTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a4caca5c_002D13e0_002D4611_002Da30d_002D9b35a1aaf3ce/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #7" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::43442725-406B-4836-8EBC-06C815B8F497::net8.0::api.Dtos.Comment.CommentDtoTests.CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bcf7296e_002D50ab_002D454c_002D8aa3_002Dbfa993131e27/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CommentResponse_ToCommentDto_ShouldMapCommentToCommentResponse #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
